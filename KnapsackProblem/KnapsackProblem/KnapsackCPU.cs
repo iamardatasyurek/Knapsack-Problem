@@ -22,45 +22,64 @@ namespace KnapsackProblem
         //10 - bu adımı m sayıda tekrarla
 
         public int population = 10;
-        public int gen_Size = 6;
-        public int knapsack_Weight = 50;
+        public int gen_size = 6;
+        public int knapsack_weight = 50;
 
-        List<Items> items_List = new List<Items>();
+        List<Items> items_list = new List<Items>();
 
         public KnapsackCPU() 
         {
             //this.population = population;
-            //this.gen_Size = gen_Size;
-            //this.knapsack_Weight = knapsack_Weight
+            //this.gen_size = gen_size;
+            //this.knapsack_weight = knapsack_weight
 
-            create_Items(items_List, population);
-            items_List.Add(new Items(0, 0)); //null item
+            create_items(items_list, population);
+            items_list.Add(new Items(0, 0)); //null item
+            int[,] chromosomes = create_chromosomes(items_list, population, gen_size, knapsack_weight);
+            List<double> fitness_values = fitness(items_list, chromosomes, population, gen_size, knapsack_weight);
+            List<double> probability = chromosomes_probability(fitness_values);
+            double[] cumulative = cumulative_sum(probability);
+            double[] rassals = get_Rassals(population);
+            int[] parents = select_parents(rassals, cumulative);
 
-            
+
+            /*
             int a = 0;
-            foreach (Items item in items_List)
+            foreach (Items item in items_list) 
             {
-                Console.WriteLine(a + " - - - " + item.weight + " " + item.volume);
+                Console.WriteLine(a + " - - - " +item.weight + " - - - " + item.volume);
                 a++;
             }
-            Console.WriteLine("--------------------------------");
+            Console.WriteLine("---------------------------------------");
+            Console.WriteLine("chromosomes");
+            write(chromosomes, population, gen_size);
+            Console.WriteLine("--------------------------------------");
+            Console.WriteLine("fitness values");
+            write(fitness_values);
+            Console.WriteLine("---------------------------------------");
+            Console.WriteLine("Probility");
+            write(probability);
+            Console.WriteLine("---------------------------------------");
+            Console.WriteLine("cumulative");
+            write(cumulative.ToList<double>());
+            Console.WriteLine("---------------------------------------");
+            Console.WriteLine("rassal");
+            write(rassals.ToList<double>());
+            Console.WriteLine("---------------------------------------");
+            Console.WriteLine("parents");
+            write(parents);
+            */
+
             
 
-            int[,] items_Index = create_chromosomes(items_List,population,gen_Size,knapsack_Weight);
-            
-                                                                                                            
-            for (int i = 0; i < population; i++)
-            {
-                for (int j = 0; j < gen_Size; j++)
-                {
-                    Console.Write(items_Index[i,j] + " ");
-                }
-                Console.WriteLine();
-            }
-            Console.WriteLine("-----------------------------------");
-            
+
+
             /*
-            double[] distanceCount = Distance(items_List,items_Index, population, gen_Size, knapsack_Weight);
+            int[,] chromosomes = create_chromosomes(items_list,population,gen_size,knapsack_weight);
+            */
+
+            /*         
+            double[] distanceCount = Distance(items_list,chromosomes, population, gen_size, knapsack_weight);
             double[] distanceHesap = DistanceHesap(distanceCount);
             double[] distanceKumulatif = DistanceKumulatif(distanceHesap);
             double[] kumulatifToplam = ToplamKumulatif(distanceKumulatif);
@@ -72,116 +91,94 @@ namespace KnapsackProblem
             Console.WriteLine("--------------------");
             */
 
-            double[] fitness_Values = fitness(items_List, items_Index, population, gen_Size, knapsack_Weight);     
+            /*
+            double[] fitness_values = fitness(items_list, chromosomes, population, gen_size, knapsack_weight);     
             double[] rassals = get_Rassals(population);
-            Console.WriteLine("Fitness --------------- Rassals");
-            Console.WriteLine();
-            for (int i = 0; i < rassals.Length; i++)
-            {
-                Console.WriteLine(fitness_Values[i] + " - - - " + rassals[i]);
-            }
-            Console.WriteLine("---------------------------------");
-            int[] parents = select_Parents(rassals,fitness_Values);
-            Console.WriteLine("parents");
-            Console.WriteLine();
-            foreach (int d in parents)
-            {
-                Console.Write(d +" ");
-            }
-            Console.WriteLine();
-            Console.WriteLine("---------------------------------");
+            int[] parents = select_parents(rassals,fitness_values);
+            */
         }
-        public static void create_Items(List<Items> items_List, int population)
+        public static void create_items(List<Items> items_list, int population)
         {
             Random rnd = new Random();
             for (int i = 0; i < population; i++)
             {
-                items_List.Add(new Items(rnd.NextDouble() * 10, rnd.Next(1, 20)));
+                items_list.Add(new Items(rnd.NextDouble() * 10, rnd.Next(1, 20)));
             }
         }
-        public static int[,] create_chromosomes(List<Items> items_List, int population, int gen_Size, int knapsack_Weight) 
+        public static int[,] create_chromosomes(List<Items> items_list, int population, int gen_size, int knapsack_weight) 
         {
-            Items[] items_Array = items_List.ToArray();
-            int[,] items_Index = new int[population,gen_Size];
+            Items[] items_array = items_list.ToArray();
+            int[,] chromosomes = new int[population,gen_size]; 
             Random rnd = new Random();
-            int count = 0;
             for (int i = 0; i < population; i++)
             {
-                double chromosome_Weight = 0;
-                for (int j = 0; j < gen_Size; j++)
+                double chromosome_weight = 0;
+                for (int j = 0; j < gen_size; j++)
                 {
-                    //gen sayısını ben belirlemelimiyim ? 6 olarak belirledim
-                    //çaprazlama yaparken sıkıntı olur mu ?
-                    int index = rnd.Next(0, items_Array.Length-1); // (0,11-1) -> (0,10) -> 0 - 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9
-                    if (chromosome_Weight + items_Array[index].weight < knapsack_Weight && items_Array[index].volume > 0)
+                    int index = rnd.Next(0, items_array.Length-1);
+                    if (chromosome_weight + items_array[index].weight < knapsack_weight && items_array[index].volume > 0)
                     {
-                        chromosome_Weight += items_Array[index].weight;
-                        items_Array[index].decrease_Volume();
-                        items_Index[i, j] = index;
+                        chromosome_weight += items_array[index].weight;
+                        items_array[index].decrease_Volume();
+                        chromosomes[i, j] = index;
                     }
                     else 
                     {
-                        count++;
-                        items_Index[i, j] = items_Array.Length-1; //null item
+                        chromosomes[i, j] = items_array.Length-1; //null item
                     }
                 }
             }
-            Console.WriteLine("Null Item Count: "+count);
-            Console.WriteLine();
-            return items_Index;
+            return chromosomes;
         }
-        
-        public static double[] fitness(List<Items> items_List, int[,] items_Index,int population, int gen_Size, int knapsack_Weight) 
+
+        public static double fitness(List<Items> items_list, int[] chromosome, int gen_size, int knapsack_weight)
         {
-            Items[] items_Array = items_List.ToArray();
-            double total = 0;
-            double[] fitness_Values = new double[population];
+            Items[] items_array = items_list.ToArray();
+            double fitness_value =0;
+            for (int j = 0; j < gen_size; j++)
+            {
+                fitness_value += items_array[chromosome[j]].weight;
+            }
+            fitness_value= 1 / (1 + Math.Abs(fitness_value - knapsack_weight));
+            return fitness_value;
+        }
+        public static List<double> fitness(List<Items> items_list, int[,] chromosomes, int population, int gen_size, int knapsack_weight) 
+        {
+            Items[] items_array = items_list.ToArray();
+            List<double> fitness_values = new List<double>();
+            double total;
             for (int i = 0; i < population; i++)
             {
                 total = 0;
-                for (int j = 0; j < gen_Size; j++)
+                for (int j = 0; j < gen_size; j++)
                 {
-                    total += items_Array[items_Index[i, j]].weight;  
+                    total += items_array[chromosomes[i, j]].weight;
                 }
-                total -= knapsack_Weight;
-                fitness_Values[i] = Math.Abs(total);
+                fitness_values.Add(1 / (1 + Math.Abs(total - knapsack_weight)));
             }
-            double[] temp = new double[fitness_Values.Length];
-            total = 0;
-            for (int i = 0; i < fitness_Values.Length; i++)
+            return fitness_values;
+        }
+        public static List<double> chromosomes_probability(List<double> fitness_values) 
+        {
+            List<double> probability= new List<double>();
+            int loop = fitness_values.Count;
+            double total= fitness_values.Sum();
+            for (int i = 0; i < loop; i++) 
+            { 
+                probability.Add(fitness_values[i] / total);
+            }
+            return probability;
+        }
+        public static double[] cumulative_sum(List<double> probability)
+        {
+            double[] probability_array = probability.ToArray();
+            double toplam = 0;
+            for (int i = 0; i < probability_array.Length; i++)
             {
-                total = fitness_Values[i] + 1;
-                temp[i] = 1 / Convert.ToDouble(total);
+                toplam += probability_array[i];
+                probability_array[i] = toplam;
             }
-            
-            for (int i = 0; i < fitness_Values.Length; i++)
-            {
-                fitness_Values[i] = temp[i];
-            }
-            total = 0;
-            for (int i = 0; i < fitness_Values.Length; i++)
-            {
-                total += fitness_Values[i];
-            }
-            for (int i = 0; i < fitness_Values.Length; i++)
-            {
-                temp[i] = fitness_Values[i] / total;
-            }
-            for (int i = 0; i < fitness_Values.Length; i++)
-            {
-                fitness_Values[i] = temp[i];
-            }
-            total = 0;
-            for (int i = 0; i < fitness_Values.Length; i++)
-            {
-                total  += fitness_Values[i];
-                temp[i] = total;
-            }
-            for (int i = 0; i < fitness_Values.Length; i++)
-            {
-                fitness_Values[i] = temp[i];
-            }
-            return fitness_Values;
+            return probability_array;
         }
         public static double[] get_Rassals(int population) 
         {
@@ -193,28 +190,53 @@ namespace KnapsackProblem
             }
             return rassals;
         }
-        public static int[] select_Parents(double[] rassals, double[] fitness_Values) 
+        public static int[] select_parents(double[] rassals, double[] cumulative) 
         {
             List<int> parents = new List<int>();
             for (int i = 0; i < rassals.Length; i++)
             {
                 for (int a = 0; a < rassals.Length; a++)
                 {
-                    if (fitness_Values[a] > rassals[i])
+                    if (cumulative[a] > rassals[i])
                     {
                         parents.Add(a);
                         break;
                     }
                 }
             }
-            int[] parents_Array = parents.ToArray();
-            List<int> parents_Total = new List<int>();
-            for (int i = 0; i < parents_Array.Length; i++)
+            int[] parents_array = parents.ToArray();
+            List<int> parents_total = new List<int>();
+            for (int i = 0; i < parents_array.Length; i++)
             {
-                if (!parents_Total.Contains(parents_Array[i]))
-                    parents_Total.Add(parents_Array[i]);
+                if (!parents_total.Contains(parents_array[i]))
+                    parents_total.Add(parents_array[i]);
             }
-            return parents_Total.ToArray();
+            return parents_total.ToArray();
+        }
+        public void write(List<double> list) 
+        {
+            foreach(var v in list) 
+            {
+                Console.WriteLine(v);
+            }
+        }
+        public void write(int[] array)
+        {
+            foreach (var v in array)
+            {
+                Console.Write(v+" ");
+            }
+        }
+        public void write(int[,] arrays, int population, int gen_size) 
+        {
+            for (int i = 0; i < population; i++)
+            {
+                for (int j = 0; j < gen_size; j++)
+                {
+                    Console.Write(arrays[i,j]+" ");
+                }
+                Console.WriteLine();
+            }
         }
 
 
@@ -245,6 +267,60 @@ namespace KnapsackProblem
 
 
 
+
+        /*
+        public static double[] fitness(List<Items> items_list, int[,] chromosomes, int population, int gen_size, int knapsack_weight) 
+        {
+            Items[] items_array = items_list.ToArray();
+            double total = 0;
+            double[] fitness_values = new double[population];
+            for (int i = 0; i < population; i++)
+            {
+                total = 0;
+                for (int j = 0; j < gen_size; j++)
+                {
+                    total += items_array[chromosomes[i, j]].weight;  
+                }
+                total -= knapsack_weight;
+                fitness_values[i] = Math.Abs(total);
+            }
+            double[] temp = new double[fitness_values.Length]; 
+            total = 0;
+            for (int i = 0; i < fitness_values.Length; i++)
+            {
+                total = fitness_values[i] + 1;
+                temp[i] = 1 / Convert.ToDouble(total);
+            }          
+            for (int i = 0; i < fitness_values.Length; i++) 
+            {
+                fitness_values[i] = temp[i];
+            }
+            total = 0;
+            for (int i = 0; i < fitness_values.Length; i++)
+            {
+                total += fitness_values[i];
+            }
+            for (int i = 0; i < fitness_values.Length; i++)
+            {
+                temp[i] = fitness_values[i] / total;
+            }
+            for (int i = 0; i < fitness_values.Length; i++)
+            {
+                fitness_values[i] = temp[i];
+            }
+            total = 0;
+            for (int i = 0; i < fitness_values.Length; i++)
+            {
+                total  += fitness_values[i];
+                temp[i] = total;
+            }
+            for (int i = 0; i < fitness_values.Length; i++)
+            {
+                fitness_values[i] = temp[i];
+            }
+            return fitness_values;
+        }
+        */
 
         /*
         public static double[] Distance(List<Items> items_List,int[,] items_Index, int population, int gen_Size, int knapsack_Weight)
