@@ -8,19 +8,12 @@ namespace KnapsackProblem
 {
     public class Items
     {
-        public double weight;
-        public int volume;
-        public Items(double weight, int volume) 
+        public int weight;
+        public int amount;
+        public Items(int weight, int amount) 
         {
             this.weight = weight;
-            this.volume = volume;  
-        }
-        public void decrease_Volume() 
-        {
-            if (this.volume > 0)
-                this.volume--;
-            else
-                this.volume = 0;
+            this.amount = amount;  
         }
     }
 }

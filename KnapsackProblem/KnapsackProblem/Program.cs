@@ -5,10 +5,9 @@ namespace KnapsackProblem
 {
     class Program
     {
-        static void Main(string[] args)
-        {
-            // https://www.c-sharpcorner.com/UploadFile/mahesh/create-a-list-of-objects-in-C-Sharp/
-            KnapsackCPU ksCpu = new KnapsackCPU();
+        public static void Main(string[] args)
+        {   
+            Cpu cpu = new Cpu();
         }
        
     }
