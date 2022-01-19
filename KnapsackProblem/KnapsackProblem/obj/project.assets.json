@@ -17,6 +17,18 @@
           "lib/net5.0/ILGPU.dll": {}
         }
       },
+      "ILGPU.Algorithms/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "ILGPU": "1.0.0"
+        },
+        "compile": {
+          "lib/net5.0/ILGPU.Algorithms.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/ILGPU.Algorithms.dll": {}
+        }
+      },
       "System.Collections.Immutable/5.0.0": {
         "type": "package",
         "compile": {
@@ -74,6 +86,26 @@
         "lib/net5.0/ILGPU.xml",
         "lib/netstandard2.1/ILGPU.dll",
         "lib/netstandard2.1/ILGPU.xml"
+      ]
+    },
+    "ILGPU.Algorithms/1.0.0": {
+      "sha512": "FjWtW+NB5lPLwUK3vF+GzW1B78UTFdJcr5xkKgyjNDX2LZnK674D/bKcZKsnkpmWiPqMFGS6q/BjxFWtXMVJ6Q==",
+      "type": "package",
+      "path": "ilgpu.algorithms/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE-3RD-PARTY.txt",
+        "LICENSE.txt",
+        "ilgpu.algorithms.1.0.0.nupkg.sha512",
+        "ilgpu.algorithms.nuspec",
+        "lib/net471/ILGPU.Algorithms.dll",
+        "lib/net471/ILGPU.Algorithms.pdb",
+        "lib/net471/ILGPU.Algorithms.xml",
+        "lib/net5.0/ILGPU.Algorithms.dll",
+        "lib/net5.0/ILGPU.Algorithms.xml",
+        "lib/netstandard2.1/ILGPU.Algorithms.dll",
+        "lib/netstandard2.1/ILGPU.Algorithms.xml"
       ]
     },
     "System.Collections.Immutable/5.0.0": {
@@ -184,7 +216,8 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "ILGPU >= 1.0.0"
+      "ILGPU >= 1.0.0",
+      "ILGPU.Algorithms >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -227,6 +260,10 @@
         "targetAlias": "net5.0",
         "dependencies": {
           "ILGPU": {
+            "target": "Package",
+            "version": "[1.0.0, )"
+          },
+          "ILGPU.Algorithms": {
             "target": "Package",
             "version": "[1.0.0, )"
           }

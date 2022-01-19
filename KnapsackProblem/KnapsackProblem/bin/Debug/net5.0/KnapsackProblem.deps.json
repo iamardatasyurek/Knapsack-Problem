@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v5.0": {
       "KnapsackProblem/1.0.0": {
         "dependencies": {
-          "ILGPU": "1.0.0"
+          "ILGPU": "1.0.0",
+          "ILGPU.Algorithms": "1.0.0"
         },
         "runtime": {
           "KnapsackProblem.dll": {}
@@ -23,6 +24,17 @@
         },
         "runtime": {
           "lib/net5.0/ILGPU.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "ILGPU.Algorithms/1.0.0": {
+        "dependencies": {
+          "ILGPU": "1.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/ILGPU.Algorithms.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -46,6 +58,13 @@
       "sha512": "sha512-0RmFKvjRleJRaqxKLDWVEJMzizvXudRnKzz16eEzq4QDaHgr2wEWVmwC+hA3wQOiUqgIx4cBV2DV5rS5pHfjUA==",
       "path": "ilgpu/1.0.0",
       "hashPath": "ilgpu.1.0.0.nupkg.sha512"
+    },
+    "ILGPU.Algorithms/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FjWtW+NB5lPLwUK3vF+GzW1B78UTFdJcr5xkKgyjNDX2LZnK674D/bKcZKsnkpmWiPqMFGS6q/BjxFWtXMVJ6Q==",
+      "path": "ilgpu.algorithms/1.0.0",
+      "hashPath": "ilgpu.algorithms.1.0.0.nupkg.sha512"
     },
     "System.Collections.Immutable/5.0.0": {
       "type": "package",

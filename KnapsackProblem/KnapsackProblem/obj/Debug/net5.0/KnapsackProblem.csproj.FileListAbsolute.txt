@@ -32,3 +32,4 @@ C:\Users\arda_\Desktop\Bitirme Projesi 1\Knapsack-Problem\KnapsackProblem\Knapsa
 C:\Users\arda_\Desktop\Bitirme Projesi 1\Knapsack-Problem\KnapsackProblem\KnapsackProblem\obj\Debug\net5.0\KnapsackProblem.csproj.AssemblyReference.cache
 C:\Users\arda_\Desktop\Bitirme Projesi 1\Knapsack-Problem\KnapsackProblem\KnapsackProblem\bin\Debug\net5.0\ILGPU.dll
 C:\Users\arda_\Desktop\Bitirme Projesi 1\Knapsack-Problem\KnapsackProblem\KnapsackProblem\obj\Debug\net5.0\KnapsackProblem.csproj.CopyComplete
+C:\Users\arda_\Desktop\Bitirme Projesi 1\Knapsack-Problem\KnapsackProblem\KnapsackProblem\bin\Debug\net5.0\ILGPU.Algorithms.dll

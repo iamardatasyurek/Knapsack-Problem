@@ -43,6 +43,10 @@
             "ILGPU": {
               "target": "Package",
               "version": "[1.0.0, )"
+            },
+            "ILGPU.Algorithms": {
+              "target": "Package",
+              "version": "[1.0.0, )"
             }
           },
           "imports": [

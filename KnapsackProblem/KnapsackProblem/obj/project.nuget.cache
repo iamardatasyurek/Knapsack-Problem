@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "EDFHJjl1itCtSqkAZv2NujB/WsatNj3BRibs3FiurPTtsfXuz3zn2iPhv0CtswYE5XSrFdF0tApxGeqvYl7Eww==",
+  "dgSpecHash": "eftJGTtPHZj4/D6IkPbfJOwJU7UmCtfVMgeEql6RSVIHAnXQ9Hhaez3614VEMFpWxo7J4rnFzEuYp8EMJSX0cQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\arda_\\Desktop\\Bitirme Projesi 1\\Knapsack-Problem\\KnapsackProblem\\KnapsackProblem\\KnapsackProblem.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\arda_\\.nuget\\packages\\ilgpu\\1.0.0\\ilgpu.1.0.0.nupkg.sha512",
+    "C:\\Users\\arda_\\.nuget\\packages\\ilgpu.algorithms\\1.0.0\\ilgpu.algorithms.1.0.0.nupkg.sha512",
     "C:\\Users\\arda_\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
     "C:\\Users\\arda_\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Users\\arda_\\.nuget\\packages\\system.reflection.metadata\\5.0.0\\system.reflection.metadata.5.0.0.nupkg.sha512",
