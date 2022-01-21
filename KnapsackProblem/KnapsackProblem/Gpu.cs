@@ -149,7 +149,7 @@ namespace KnapsackProblem
 
             sw.Stop();
             Console.WriteLine();
-            Console.WriteLine("Süre: " + sw.ElapsedMilliseconds);
+            Console.WriteLine("GPU Süre: " + sw.ElapsedMilliseconds);
 
         }
 
