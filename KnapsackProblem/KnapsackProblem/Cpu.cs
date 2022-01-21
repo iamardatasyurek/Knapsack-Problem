@@ -13,7 +13,7 @@ namespace KnapsackProblem
         public int item_count = 10;
         public int gen_size;
         public int knapsack_weight = 150;
-        public double crossover_rate = 0.05;
+        public double crossover_rate = 0.5;
         public double mutation_rate = 0.3;
         public double take_rate = 0.5;
         public int iteration = 100;
