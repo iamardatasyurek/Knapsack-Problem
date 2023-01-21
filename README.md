@@ -19,13 +19,13 @@ Step 3
 - Selection of parents with using cumulative totals
 - Crossing genes of the parents
 
-Parents
+Parents <br/>
 ![parents](https://github.com/iamardatasyurek/Knapsack-Problem/blob/main/images/crossoverparents.png)
 
-Crossover Type 1
+Crossover Type 1 <br/>
 ![crossovertype1](https://github.com/iamardatasyurek/Knapsack-Problem/blob/main/images/crossovertype1.png)
 
-Crossover Type 2
+Crossover Type 2 <br/>
 ![crossovertype2](https://github.com/iamardatasyurek/Knapsack-Problem/blob/main/images/crossovertype2.png)
 
 Note: In the GPU calculation, only type 1 crossover was used.
