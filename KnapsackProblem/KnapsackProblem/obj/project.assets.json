@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "net5.0": {
+    "net7.0": {
       "ILGPU/1.0.0": {
         "type": "package",
         "dependencies": {
@@ -11,10 +11,14 @@
           "System.Runtime.CompilerServices.Unsafe": "5.0.0"
         },
         "compile": {
-          "lib/net5.0/ILGPU.dll": {}
+          "lib/net5.0/ILGPU.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/net5.0/ILGPU.dll": {}
+          "lib/net5.0/ILGPU.dll": {
+            "related": ".xml"
+          }
         }
       },
       "ILGPU.Algorithms/1.0.0": {
@@ -23,19 +27,27 @@
           "ILGPU": "1.0.0"
         },
         "compile": {
-          "lib/net5.0/ILGPU.Algorithms.dll": {}
+          "lib/net5.0/ILGPU.Algorithms.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/net5.0/ILGPU.Algorithms.dll": {}
+          "lib/net5.0/ILGPU.Algorithms.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.Collections.Immutable/5.0.0": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/System.Collections.Immutable.dll": {}
+          "lib/netstandard2.0/System.Collections.Immutable.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/netstandard2.0/System.Collections.Immutable.dll": {}
+          "lib/netstandard2.0/System.Collections.Immutable.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.Memory/4.5.4": {
@@ -50,19 +62,27 @@
       "System.Reflection.Metadata/5.0.0": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/System.Reflection.Metadata.dll": {}
+          "lib/netstandard2.0/System.Reflection.Metadata.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/netstandard2.0/System.Reflection.Metadata.dll": {}
+          "lib/netstandard2.0/System.Reflection.Metadata.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.Runtime.CompilerServices.Unsafe/5.0.0": {
         "type": "package",
         "compile": {
-          "ref/netstandard2.1/System.Runtime.CompilerServices.Unsafe.dll": {}
+          "ref/netstandard2.1/System.Runtime.CompilerServices.Unsafe.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
+          "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.dll": {
+            "related": ".xml"
+          }
         }
       }
     }
@@ -215,7 +235,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net5.0": [
+    "net7.0": [
       "ILGPU >= 1.0.0",
       "ILGPU.Algorithms >= 1.0.0"
     ]
@@ -226,26 +246,26 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\arda_\\Desktop\\Bitirme Projesi 1\\Knapsack-Problem\\KnapsackProblem\\KnapsackProblem\\KnapsackProblem.csproj",
+      "projectUniqueName": "D:\\Codes\\Knapsack-Problem\\KnapsackProblem\\KnapsackProblem\\KnapsackProblem.csproj",
       "projectName": "KnapsackProblem",
-      "projectPath": "C:\\Users\\arda_\\Desktop\\Bitirme Projesi 1\\Knapsack-Problem\\KnapsackProblem\\KnapsackProblem\\KnapsackProblem.csproj",
+      "projectPath": "D:\\Codes\\Knapsack-Problem\\KnapsackProblem\\KnapsackProblem\\KnapsackProblem.csproj",
       "packagesPath": "C:\\Users\\arda_\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\arda_\\Desktop\\Bitirme Projesi 1\\Knapsack-Problem\\KnapsackProblem\\KnapsackProblem\\obj\\",
+      "outputPath": "D:\\Codes\\Knapsack-Problem\\KnapsackProblem\\KnapsackProblem\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\arda_\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net5.0"
+        "net7.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "net7.0": {
+          "targetAlias": "net7.0",
           "projectReferences": {}
         }
       },
@@ -256,8 +276,8 @@
       }
     },
     "frameworks": {
-      "net5.0": {
-        "targetAlias": "net5.0",
+      "net7.0": {
+        "targetAlias": "net7.0",
         "dependencies": {
           "ILGPU": {
             "target": "Package",
@@ -274,7 +294,8 @@
           "net47",
           "net471",
           "net472",
-          "net48"
+          "net48",
+          "net481"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -283,7 +304,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

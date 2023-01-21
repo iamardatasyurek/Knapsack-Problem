@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eftJGTtPHZj4/D6IkPbfJOwJU7UmCtfVMgeEql6RSVIHAnXQ9Hhaez3614VEMFpWxo7J4rnFzEuYp8EMJSX0cQ==",
+  "dgSpecHash": "xTby82aVTd79jyIDe8NAfSE6i5yUNhuZPv/WIpPyMwnOiJ78KJdRnSdlMxGiLoX8Xc4Tpn0BclKkELTLT6MTeQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\arda_\\Desktop\\Bitirme Projesi 1\\Knapsack-Problem\\KnapsackProblem\\KnapsackProblem\\KnapsackProblem.csproj",
+  "projectFilePath": "D:\\Codes\\Knapsack-Problem\\KnapsackProblem\\KnapsackProblem\\KnapsackProblem.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\arda_\\.nuget\\packages\\ilgpu\\1.0.0\\ilgpu.1.0.0.nupkg.sha512",
     "C:\\Users\\arda_\\.nuget\\packages\\ilgpu.algorithms\\1.0.0\\ilgpu.algorithms.1.0.0.nupkg.sha512",

@@ -7,11 +7,10 @@ namespace KnapsackProblem
     {
         public static void Main(string[] args)
         {
-            Cpu cpu = new Cpu();
-            //CUDATest cdts = new CUDATest();
-            Gpu gpu = new Gpu();
-            Console.WriteLine("CPU Süre: "+cpu.sw.ElapsedMilliseconds);
-        }
+            KnapsackSolver cpu = new KnapsackSolverCpu(10, 10, 150, 0.5, 0.3, 0.5, 100);
+            KnapsackSolver gpu = new KnapsackSolverGpu(10, 10, 150, 0.5, 0.3, 0.5, 100);
 
+            Console.WriteLine($"CPU Süre: {cpu._sw.ElapsedMilliseconds}");
+        }
     }
 }
